@@ -1,5 +1,6 @@
 const InitialState = {
-     lang : 'en'
+     lang : 'en',
+     isLoading : false
 }
 
 function languageReducer(state = InitialState, action) {
@@ -8,6 +9,11 @@ function languageReducer(state = InitialState, action) {
                return {
                     ...state,
                     lang: action.payload
+               }
+          case 'CHANGE_LOADER':
+               return {
+                    ...state,
+                    isLoading: action.payload
                }
           default:
                return state;

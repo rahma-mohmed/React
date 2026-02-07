@@ -4,10 +4,12 @@ import ProductDetails from "../product/details";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axiosInstsance from "../axios config/axiosinstance";
+import { useSelector } from "react-redux";
 
 export default function Products() {
      const [products, setProducts] = useState([]);
-     
+     const loaderState = useSelector((state) => state.isLoading);
+
      useEffect(() => {
           // Fetch product data from an API or database
           // Example using axios:
@@ -22,6 +24,15 @@ export default function Products() {
 
      return (
           <>
+               {
+               loaderState && (
+                    <div className="loading-overlay">
+                         <div className="spinner-border text-primary" role="status">
+                              <span className="visually-hidden">Loading...</span>
+                         </div>
+                    </div>
+                    )
+               }
           <div className="container mt-4">
           <h2>Our Products</h2>
           <p>Explore our wide range of products tailored to your needs.</p>
@@ -59,6 +70,5 @@ export default function Products() {
           </div>
           </div>
           </>
-
      );
 }

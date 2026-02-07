@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import changeLanguage from "../store/actions";
+import {changeLanguage} from "../store/actions";
 import { useDispatch } from "react-redux";
 
 export default function Home() {
@@ -9,7 +9,7 @@ export default function Home() {
 
      return (
           <>
-          <div>
+          <div dir = {language === 'ar' ? 'rtl' : 'ltr'} className="home"  style={{ textAlign: language === 'ar' ? 'right' : 'left' }}>
                <h2>Home Page</h2>
                <p>Welcome to the home page of our React application!</p>
           </div>
